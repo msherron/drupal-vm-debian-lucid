@@ -4,14 +4,14 @@ geerlingguy.apache
 geerlingguy.composer
 geerlingguy.daemonize
 geerlingguy.drupal-console
-geerlingguy.drush
+msherron.drush-debian-lucid
 geerlingguy.firewall
-geerlingguy.git
+msherron.git-debian-lucid
 geerlingguy.java
 geerlingguy.mailhog
 geerlingguy.memcached
 geerlingguy.mysql
-geerlingguy.php
+msherron.php-debian-lucid
 geerlingguy.php-memcached
 geerlingguy.php-mysql
 geerlingguy.php-pecl
@@ -21,4 +21,4 @@ geerlingguy.pimpmylog
 geerlingguy.repo-remi
 geerlingguy.security
 geerlingguy.solr
-geerlingguy.varnish
+msherron.varnish-debian-lucid

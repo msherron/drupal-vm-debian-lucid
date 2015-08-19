@@ -1,7 +1,7 @@
 ---
 # `vagrant_box` can also be set to geerlingguy/centos6, geerlingguy/centos7,
 # geerlingguy/ubuntu1204, parallels/ubuntu-14.04, etc.
-vagrant_box: geerlingguy/ubuntu1404
+vagrant_box: box-cutter/ubuntu1004
 vagrant_user: vagrant
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
@@ -107,8 +107,8 @@ extra_packages:
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false
 
-drush_version: master
-drush_keep_updated: true
+drush_version: 5.8.0
+drush_keep_updated: false
 
 firewall_allowed_tcp_ports:
   - "22"
@@ -124,7 +124,7 @@ firewall_allowed_tcp_ports:
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.5, 5.6, 7.0 (experimental).
-php_version: "5.6"
+php_version: "5.3.2-1ubuntu4.28"
 php_memory_limit: "192M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
@@ -174,3 +174,12 @@ solr_xmx: "128M"
 
 # Selenium configuration
 selenium_version: 2.46.0
+
+# *** LUCID SUPPORT: Ansible overrides
+
+# Some apt repos need to be added if we're supporting Lucid.
+debian_lucid_flag: true
+
+# Older versions of APC do not support letters in this variable; 
+# e.g., use "96" not "96M".
+php_apc_shm_size: "96"
