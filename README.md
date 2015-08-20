@@ -2,7 +2,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/drupal-vm/badge/?version=latest)](http://docs.drupalvm.com)
 
-Drupal VM + Lucid is a fork of GeerlingGuy's [Drupal VM](http://www.drupalvm.com/) customized for those poor souls who, as required by forces beyond their control, must develop on Debian Lucid. It includes older versions of the various LAMP packages and tools supported by Lucid.
+Drupal VM + Lucid is a fork of geerlingguy's [Drupal VM](http://www.drupalvm.com/) customized for those poor souls who, as required by forces beyond their control, must develop on Debian Lucid. It includes older versions of the various LAMP packages and tools supported by Lucid.
 
 [Drupal VM](http://www.drupalvm.com/) is A VM for local Drupal development, built with Vagrant + Ansible.
 
@@ -134,4 +134,5 @@ This project is licensed under the MIT open source license.
 ## About the Authors
 
 [Jeff Geerling](http://jeffgeerling.com/), owner of [Midwestern Mac, LLC](http://www.midwesternmac.com/), created this project in 2014 so he could accelerate his Drupal core and contrib development workflow. This project, and others like it, are also featured as examples in Jeff's book, [Ansible for DevOps](https://leanpub.com/ansible-for-devops).
+
 [Michael Sherron](http://michaelsherron.com), Forked the original DVM project to provide Debian Lucid support.
