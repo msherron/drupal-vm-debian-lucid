@@ -1,21 +1,24 @@
-<p align="center"><img src="https://raw.githubusercontent.com/geerlingguy/drupal-vm/master/docs/images/drupal-vm-logo.png" alt="Drupal VM Logo" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/msherron/drupal-vm-debian-lucid/master/docs/images/drupal-lucid-vm-logo.png" alt="Drupal Lucid VM Logo" /></p>
 
-[![Build Status](https://travis-ci.org/geerlingguy/drupal-vm.svg?branch=master)](https://travis-ci.org/geerlingguy/drupal-vm) [![Documentation Status](https://readthedocs.org/projects/drupal-vm/badge/?version=latest)](http://docs.drupalvm.com)
+[![Documentation Status](https://readthedocs.org/projects/drupal-vm/badge/?version=latest)](http://docs.drupalvm.com)
+
+Drupal VM + Lucid is a fork of GeerlingGuy's [Drupal VM](http://www.drupalvm.com/) customized for those poor souls who are required by forces beyond their control to develop on Debian Lucid. It includes older versions of the various LAMP packages and tools Lucid supports.
 
 [Drupal VM](http://www.drupalvm.com/) is A VM for local Drupal development, built with Vagrant + Ansible.
 
 This project aims to make spinning up a simple local Drupal test/development environment incredibly quick and easy, and to introduce new developers to the wonderful world of Drupal development on local virtual machines (instead of crufty old MAMP/WAMP-based development).
 
-It will install the following on an Ubuntu 14.04 (by default) linux VM:
+**Note** the documentation below has been altered from the standard Drupal VM readme to indicate changes relative to DVM+Lucid. Unless otherwise indicated, installing and starting DVM+Lucid is exactly the same as DVM.
 
-  - Apache 2.4.x
-  - PHP 5.5.x (configurable)
-  - MySQL 5.5.x
-  - Drush (configurable)
-  - Drupal Console (if using Drupal 8+)
-  - Drupal 6.x, 7.x, or 8.x.x (configurable)
+It will install the following on an Ubuntu 10.04 (by default) linux VM:
+
+  - Apache 2.2.14
+  - PHP 5.3.10
+  - MySQL 5.1.x
+  - Drush 5.8.0
+  - Drupal 6.x or 7.x (configurable, note that 8.x is NOT supported)
   - Optional:
-    - Varnish 4.x
+    - Varnish 3.x
     - Apache Solr 4.10.x (configurable)
     - Selenium, for testing your sites via Behat
     - Memcached
@@ -38,9 +41,9 @@ Full Drupal VM documentation is available at http://docs.drupalvm.com/
 There are a couple places where you can customize the VM for your needs:
 
   - `config.yml`: Contains variables like the VM domain name and IP address, PHP and MySQL configuration, etc.
-  - `drupal.make.yml`: Contains configuration for the Drupal core version, modules, and patches that will be downloaded on Drupal's initial installation (more about [Drush make files](https://www.drupal.org/node/1432374)).
+  - `drupal.make.yml`: Contains configuration for the Drupal core version, modules, and patches that will be downloaded on Drupal's initial installation (more about [Drush make files](https://www.drupal.org/node/1432374)). *NOTE:* As DVM+Lucid requires an older version of Drush (5.8), the make files are substantially different from original DVM. The included default make file will build a vanilla D7 site in DVM+Lucid.
 
-If you want to switch from Drupal 8 (default) to Drupal 7 or 6 on the initial install, do the following:
+If you want to switch from Drupal 7 (default) to Drupal 6 on the initial install, do the following:
 
   1. Update the Drupal `version` and `core` inside the `drupal.make.yml` file.
   2. Update `drupal_major_version` inside `config.yml`.
@@ -106,7 +109,6 @@ Drupal VM is built to integrate with every developer's workflow. Many guides for
   - [Connect to the MySQL Database](http://docs.drupalvm.com/en/latest/extras/mysql/)
   - [Use Apache Solr for Search](http://docs.drupalvm.com/en/latest/extras/solr/)
   - [Use Drush with Drupal VM](http://docs.drupalvm.com/en/latest/extras/drush/)
-  - [Use Drupal Console with Drupal VM](http://docs.drupalvm.com/en/latest/extras/drupal-console/)
   - [Use Varnish with Drupal VM](http://docs.drupalvm.com/en/latest/extras/varnish/)
   - [Use MariaDB instead of MySQL](http://docs.drupalvm.com/en/latest/extras/mariadb/)
   - [View Logs with Pimp my Log](http://docs.drupalvm.com/en/latest/extras/pimpmylog/)
@@ -129,6 +131,7 @@ Drupal VM is built to integrate with every developer's workflow. Many guides for
 
 This project is licensed under the MIT open source license.
 
-## About the Author
+## About the Authors
 
 [Jeff Geerling](http://jeffgeerling.com/), owner of [Midwestern Mac, LLC](http://www.midwesternmac.com/), created this project in 2014 so he could accelerate his Drupal core and contrib development workflow. This project, and others like it, are also featured as examples in Jeff's book, [Ansible for DevOps](https://leanpub.com/ansible-for-devops).
+[Michael Sherron](http://michaelsherron.com), Forked the original DVM project to provide Debian Lucid support.
