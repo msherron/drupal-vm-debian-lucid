@@ -22,3 +22,6 @@ geerlingguy.repo-remi
 geerlingguy.security
 geerlingguy.solr
 msherron.varnish-debian-lucid
+msherron.brightbox-ruby-debian-lucid
+msherron.testing-debian-lucid
+alban.andrieu.jmeter
