@@ -1,6 +1,5 @@
-vcl 4.0;
 
-# This Varnish VCL has been adapted from the Four Kitchens VCL for Varnish 3.
+# This Varnish VCL has been adapted from the Four Kitchens VCL for Varnish 3
 
 # Default backend definition. Points to Apache, normally.
 backend default {
@@ -27,15 +26,15 @@ sub vcl_recv {
     }
 
     # Only allow PURGE requests from IP addresses in the 'purge' ACL.
-    if (req.method == "PURGE") {
+    if (req.request == "PURGE") {
         if (!client.ip ~ purge) {
-            return (synth(405, "Not allowed."));
+            error 405 "Not allowed.";
         }
-        return (hash);
+        return (lookup);
     }
 
     # Only cache GET and HEAD requests (pass through POST requests).
-    if (req.method != "GET" && req.method != "HEAD") {
+    if (req.request != "GET" && req.request != "HEAD") {
         return (pass);
     }
 
@@ -99,7 +98,7 @@ sub vcl_deliver {
 }
 
 # Instruct Varnish what to do in the case of certain backend responses (beresp).
-sub vcl_backend_response {
+sub vcl_fetch {
     # Cache 404s, 301s, at 500s with a short lifetime to protect the backend.
     if (beresp.status == 404 || beresp.status == 301 || beresp.status == 500) {
         set beresp.ttl = 10m;
