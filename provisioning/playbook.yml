@@ -44,7 +44,7 @@
     # Additional roles for front-end development
     - msherron.brightbox-ruby-debian-lucid
     - msherron.testing-debian-lucid
-    - alban.andrieu.jmeter
+    - msherron.jmeter
 
   tasks:
     - name: Check if Drupal is already set up.
