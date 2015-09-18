@@ -119,8 +119,34 @@ Drupal VM is built to integrate with every developer's workflow. Many guides for
   - [PHP 7 on Drupal VM](http://docs.drupalvm.com/en/latest/other/php-7/)
   - [Drupal 6 Notes](http://docs.drupalvm.com/en/latest/other/drupal-6/)
 
+## SSL Support
+
+If you'd like to create an SSL enabled domain when provisioning the VM, use the following steps. **Note that this will effectively disable Varnish, as you'll be terminating SSL at Apache and Varnish does not support SSL. Requests over 443 will bypass Varnish entirely and go right to Apache.**
+
+-- Make the following changes to your config.yml
+```
+ssl_certificate_owner: vagrant
+ssl_certificate_group: vagrant
+ssl_certificate_path: "/home/vagrant"
+ssl_certificate_self_signed_common_name: "{{ vagrant_hostname }}"
+
+apache_ssl_protocol: "All"
+apache_ssl_cipher_suite: "TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:@STRENGTH"
+
+apache_vhosts_ssl:
+  - {
+    servername: "{{ drupal_domain }}", 
+    documentroot: "{{ drupal_core_path }}",
+    certificate_file: "/home/vagrant/ssl.crt",
+    certificate_key_file: "/home/vagrant/ssl.key",
+  }
+```
+-- Also add `ssl.conf` to the `apache_mods_enabled` array.
+-- This will enable SSL for the primary Drupal domain. Note that it will not force HTTPS - we leave that up to the underlying application, either via an .htaccess file, or something like the [Securepages module|https://www.drupal.org/project/securepages].
+
 ## Other Notes
 
+  - To create SSL enabled domains on running vagrant 'up'
   - To shut down the virtual machine, enter `vagrant halt` in the Terminal in the same folder that has the `Vagrantfile`. To destroy it completely (if you want to save a little disk space, or want to rebuild it from scratch with `vagrant up` again), type in `vagrant destroy`.
   - When you rebuild the VM (e.g. `vagrant destroy` and then another `vagrant up`), make sure you clear out the contents of the `drupal` folder on your host machine, or Drupal will return some errors when the VM is rebuilt (it won't reinstall Drupal cleanly).
   - You can change the installed version of Drupal or drush, or any other configuration options, by editing the variables within `config.yml`.
