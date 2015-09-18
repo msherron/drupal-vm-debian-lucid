@@ -15,6 +15,7 @@
     - { role: geerlingguy.repo-remi, when: ansible_os_family == 'RedHat' }
     - geerlingguy.firewall
     - msherron.git-debian-lucid
+    - { role: telusdigital.ssl-certificate, when: apache_vhosts_ssl|length > 0 }
     - geerlingguy.apache
     - geerlingguy.mysql
     - msherron.php-debian-lucid
