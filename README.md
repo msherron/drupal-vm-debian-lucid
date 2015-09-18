@@ -141,7 +141,7 @@ apache_vhosts_ssl:
   }
 ```
  - Also add `ssl.conf` to the `apache_mods_enabled` array.
- - This will enable SSL for the primary Drupal domain. Note that it will not force HTTPS - we leave that up to the underlying application, either via an .htaccess file, or something like the [Securepages module|https://www.drupal.org/project/securepages].
+ - This will enable SSL for the primary Drupal domain. Note that it will not force HTTPS - we leave that up to the underlying application, either via an .htaccess file, or something like the [Securepages module](https://www.drupal.org/project/securepages).
 
 ## Other Notes
 
