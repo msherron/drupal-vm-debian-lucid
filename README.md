@@ -121,9 +121,8 @@ Drupal VM is built to integrate with every developer's workflow. Many guides for
 
 ## SSL Support
 
-If you'd like to create an SSL enabled domain when provisioning the VM, use the following steps. **Note that this will effectively disable Varnish, as you'll be terminating SSL at Apache and Varnish does not support SSL. Requests over 443 will bypass Varnish entirely and go right to Apache.**
+If you'd like to create an SSL enabled domain when provisioning the VM, make the following changes to your config.yml. **Note:** this will effectively disable Varnish, as you'll be terminating SSL at Apache and Varnish does not support SSL. Requests over 443 will bypass Varnish entirely and go right to Apache.
 
--- Make the following changes to your config.yml
 ```
 ssl_certificate_owner: vagrant
 ssl_certificate_group: vagrant
@@ -141,8 +140,8 @@ apache_vhosts_ssl:
     certificate_key_file: "/home/vagrant/ssl.key",
   }
 ```
--- Also add `ssl.conf` to the `apache_mods_enabled` array.
--- This will enable SSL for the primary Drupal domain. Note that it will not force HTTPS - we leave that up to the underlying application, either via an .htaccess file, or something like the [Securepages module|https://www.drupal.org/project/securepages].
+ - Also add `ssl.conf` to the `apache_mods_enabled` array.
+ - This will enable SSL for the primary Drupal domain. Note that it will not force HTTPS - we leave that up to the underlying application, either via an .htaccess file, or something like the [Securepages module|https://www.drupal.org/project/securepages].
 
 ## Other Notes
 
